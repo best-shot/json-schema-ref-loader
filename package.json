@@ -1,0 +1,63 @@
+{
+  "name": "@best-shot/json-schema-ref-loader",
+  "version": "0.0.0",
+  "description": "`json-schema-ref-parser` for `webpack`",
+  "license": "MIT",
+  "author": {
+    "name": "Eric",
+    "email": "airkro@qq.com"
+  },
+  "keywords": [
+    "$ref",
+    "dereference",
+    "json",
+    "json-pointer",
+    "json-schema",
+    "loader",
+    "oas",
+    "openapi",
+    "ref",
+    "reference",
+    "schema",
+    "swagger",
+    "webpack",
+    "webpack-loader"
+  ],
+  "homepage": "https://github.com/best-shot/json-schema-ref-loader",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/best-shot/json-schema-ref-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/best-shot/json-schema-ref-loader/issues"
+  },
+  "main": "index.cjs",
+  "files": [],
+  "scripts": {
+    "lint:staged": "nice-move lint staged",
+    "prepare": "git config core.hooksPath .githooks",
+    "prepublishOnly": "npm run lint:staged"
+  },
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.9"
+  },
+  "devDependencies": {
+    "@nice-move/cli": "^0.7.0",
+    "@nice-move/eslint-config-base": "^0.6.3",
+    "@nice-move/prettier-config": "^0.5.2",
+    "eslint": "^8.11.0",
+    "garou": "^0.4.3",
+    "prettier": "^2.5.1"
+  },
+  "engines": {
+    "node": "^14.17.0 || >=16.13.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "eslintConfig": {
+    "extends": "@nice-move/eslint-config-base"
+  },
+  "prettier": "@nice-move/prettier-config"
+}
