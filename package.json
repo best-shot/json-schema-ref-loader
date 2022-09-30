@@ -1,6 +1,6 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
@@ -35,22 +35,23 @@
   "files": [],
   "scripts": {
     "lint:staged": "nice-move lint staged",
-    "prepare": "git config core.hooksPath .githooks",
+    "prepare": "nice-move git hooks",
     "prepublishOnly": "npm run lint:staged"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.9"
   },
   "devDependencies": {
-    "@nice-move/cli": "^0.7.0",
-    "@nice-move/eslint-config-base": "^0.6.3",
-    "@nice-move/prettier-config": "^0.5.2",
-    "eslint": "^8.11.0",
-    "garou": "^0.4.3",
-    "prettier": "^2.5.1"
+    "@bring-it/npm": "^0.1.0",
+    "@nice-move/cli": "^0.9.10",
+    "@nice-move/eslint-config-base": "^0.8.13",
+    "@nice-move/prettier-config": "^0.7.3",
+    "eslint": "^8.24.0",
+    "garou": "^0.5.1",
+    "prettier": "^2.7.1"
   },
   "engines": {
-    "node": "^14.17.0 || >=16.13.0"
+    "node": "^16.13.0 || >=18.0.0"
   },
   "publishConfig": {
     "access": "public",
