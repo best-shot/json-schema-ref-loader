@@ -3,8 +3,10 @@
 const { readFile } = require('node:fs/promises');
 const $refParser = require('@apidevtools/json-schema-ref-parser');
 
-function parse(data, resourcePath) {
-  return $refParser.dereference(resourcePath, data, {
+function parse({ data, resourcePath, dereference }) {
+  const func = dereference ? 'dereference' : 'bundle';
+
+  return $refParser[func](resourcePath, data, {
     resolve: {
       file: {
         order: 5,
@@ -23,13 +25,24 @@ const schema = {
     parser: {
       instanceof: 'Function',
     },
+    dereference: {
+      default: false,
+      oneOf: [
+        {
+          type: 'boolean',
+        },
+        {
+          instanceof: 'Function',
+        },
+      ],
+    },
   },
 };
 
 module.exports = function loader(source) {
   this.cacheable();
 
-  const { parser } = this.getOptions?.(schema) || {};
+  const { parser, dereference } = this.getOptions?.(schema) || {};
 
   const callback = this.async();
 
@@ -40,12 +53,16 @@ module.exports = function loader(source) {
   try {
     data = JSON.parse(source);
 
+    const should = Boolean(
+      typeof dereference === 'function' ? dereference(data) : dereference,
+    );
+
     if (parser) {
       data = parser(data);
     }
 
     if (data) {
-      parse(data, resourcePath)
+      parse({ data, resourcePath, dereference: should })
         .then((io) => {
           callback(null, JSON.stringify(io));
         })

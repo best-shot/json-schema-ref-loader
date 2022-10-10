@@ -2,7 +2,10 @@
   "openapi": "3.1.0",
   "paths": {
     "/tt": {
-      "$ref": "../oas.json#/paths/~1test"
+      "$ref": "../oas.json#/paths/~1test",
+      "servers": {
+        "$ref": "oas.json#/servers"
+      }
     }
   }
 }
