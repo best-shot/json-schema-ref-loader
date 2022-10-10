@@ -1,6 +1,6 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
@@ -36,7 +36,8 @@
   "scripts": {
     "lint:staged": "nice-move lint staged",
     "prepare": "nice-move git hooks",
-    "prepublishOnly": "npm run lint:staged"
+    "prepublishOnly": "npm run lint:staged && npm test",
+    "test": "ava --fail-fast"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.9"
@@ -46,8 +47,11 @@
     "@nice-move/cli": "^0.9.10",
     "@nice-move/eslint-config-base": "^0.8.13",
     "@nice-move/prettier-config": "^0.7.3",
-    "eslint": "^8.24.0",
+    "ava": "^4.3.3",
+    "eslint": "^8.25.0",
+    "eslint-plugin-ava": "^13.2.0",
     "garou": "^0.5.1",
+    "loader-runner": "^4.3.0",
     "prettier": "^2.7.1"
   },
   "engines": {

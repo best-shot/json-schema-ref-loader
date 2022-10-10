@@ -1,0 +1,9 @@
+{
+  "title": "ff",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}

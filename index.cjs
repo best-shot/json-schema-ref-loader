@@ -1,21 +1,15 @@
 'use strict';
 
-const { resolve, relative } = require('node:path');
 const { readFile } = require('node:fs/promises');
 const $refParser = require('@apidevtools/json-schema-ref-parser');
 
-const cwd = process.cwd();
-
-function parse(data, transformUrl) {
-  return $refParser.bundle(data, {
+function parse(data, resourcePath) {
+  return $refParser.dereference(resourcePath, data, {
     resolve: {
       file: {
-        order: 1,
-        canRead: true,
+        order: 5,
         read(file) {
-          const url = transformUrl(file.url);
-
-          return readFile(url, 'utf8');
+          return readFile(file.url, 'utf8');
         },
       },
     },
@@ -35,11 +29,11 @@ const schema = {
 module.exports = function loader(source) {
   this.cacheable();
 
-  const { parser } = this.getOptions(schema) || {};
+  const { parser } = this.getOptions?.(schema) || {};
 
   const callback = this.async();
 
-  const { context } = this;
+  const { resourcePath } = this;
 
   let data = '';
 
@@ -51,7 +45,7 @@ module.exports = function loader(source) {
     }
 
     if (data) {
-      parse(data, (url) => resolve(context, relative(cwd, url)))
+      parse(data, resourcePath)
         .then((io) => {
           callback(null, JSON.stringify(io));
         })
