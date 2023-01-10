@@ -42,7 +42,7 @@ const schema = {
 module.exports = function loader(source) {
   this.cacheable();
 
-  const { parser, dereference } = this.getOptions?.(schema) || {};
+  const { parser, dereference } = this.getOptions(schema) || {};
 
   const callback = this.async();
 
