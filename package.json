@@ -1,6 +1,6 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
@@ -32,7 +32,9 @@
     "url": "https://github.com/best-shot/json-schema-ref-loader/issues"
   },
   "main": "lib/index.cjs",
-  "files": [],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "lint:staged": "nice-move lint staged",
     "prepare": "nice-move git hooks",
