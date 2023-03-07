@@ -6,11 +6,11 @@ function resolve(path) {
   return resolvePath(path, import.meta.url);
 }
 
-const loader = resolve('../index.cjs');
+const loader = resolve('../lib/index.cjs');
 
 const oas = resolve('fixture/oas.json');
 
-test('base', async (t) => {
+test.serial('base', async (t) => {
   const { input, result } = await run({
     resource: oas,
     loader,
@@ -19,7 +19,7 @@ test('base', async (t) => {
   t.snapshot(diff(input, result));
 });
 
-test('nest', async (t) => {
+test.serial('nest', async (t) => {
   const { input, result } = await run({
     resource: resolve('fixture/qq/ref.json'),
     loader,
@@ -28,12 +28,12 @@ test('nest', async (t) => {
   t.snapshot(diff(input, result));
 });
 
-test('parser', async (t) => {
+test.serial('before', async (t) => {
   const { input, result } = await run({
     resource: oas,
     loader,
     options: {
-      parser(data) {
+      before(data) {
         return { openapi: data.openapi };
       },
     },
@@ -42,7 +42,21 @@ test('parser', async (t) => {
   t.snapshot(diff(input, result));
 });
 
-test('dereference', async (t) => {
+test.serial('after', async (t) => {
+  const { input, result } = await run({
+    resource: oas,
+    loader,
+    options: {
+      after(data) {
+        return data.paths;
+      },
+    },
+  });
+
+  t.snapshot(diff(input, result));
+});
+
+test.serial('dereference', async (t) => {
   const { result: result1 } = await run({
     resource: oas,
     loader,
@@ -59,7 +73,7 @@ test('dereference', async (t) => {
   t.snapshot(diff(result1, result2));
 });
 
-test('dereference by data', async (t) => {
+test.serial('dereference by data', async (t) => {
   const { result: result1 } = await run({
     resource: oas,
     loader,

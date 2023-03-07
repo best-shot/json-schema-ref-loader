@@ -1,6 +1,6 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/best-shot/json-schema-ref-loader/issues"
   },
-  "main": "index.cjs",
+  "main": "lib/index.cjs",
   "files": [],
   "scripts": {
     "lint:staged": "nice-move lint staged",
@@ -40,23 +40,23 @@
     "test": "ava --fail-fast"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.1.0"
+    "@apidevtools/json-schema-ref-parser": "^9.1.2"
   },
   "devDependencies": {
-    "@bring-it/npm": "^0.1.0",
-    "@nice-move/cli": "^0.10.2",
-    "@nice-move/eslint-config-base": "^0.9.4",
+    "@bring-it/npm": "^0.1.1",
+    "@nice-move/cli": "^0.10.3",
+    "@nice-move/eslint-config-base": "^0.9.5",
     "@nice-move/prettier-config": "^0.8.0",
-    "ava": "^5.1.0",
+    "ava": "^5.2.0",
     "concordance": "^5.0.4",
-    "eslint": "^8.31.0",
-    "eslint-plugin-ava": "^13.2.0",
-    "garou": "^0.6.1",
+    "eslint": "^8.35.0",
+    "eslint-plugin-ava": "^14.0.0",
+    "garou": "^0.6.3",
     "loader-runner": "^4.3.0",
-    "prettier": "^2.8.2"
+    "prettier": "^2.8.4"
   },
   "engines": {
-    "node": "^16.13.0 || >=18.0.0"
+    "node": "^16.15.0 || >=18.12.0"
   },
   "publishConfig": {
     "access": "public",
