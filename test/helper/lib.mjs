@@ -24,14 +24,9 @@ export function run({ resource, loader, options }) {
           reject(error);
         }
 
-        const {
-          resourceBuffer,
-          result: [final],
-        } = result;
-
         resolve({
-          input: JSON.parse(resourceBuffer),
-          result: JSON.parse(final),
+          input: JSON.parse(result?.resourceBuffer),
+          result: JSON.parse(result?.result?.[0]),
         });
       },
     );

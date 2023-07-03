@@ -6,6 +6,12 @@
       "servers": {
         "$ref": "oas.json#/servers"
       }
+    },
+    "/zz": {
+      "$ref": "scope:nice-move/cli/package.json#/bin"
+    },
+    "/yy": {
+      "$ref": "npm:garou/package.json#/bin"
     }
   }
 }
