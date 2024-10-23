@@ -2,16 +2,16 @@
   "openapi": "3.1.0",
   "paths": {
     "/tt": {
-      "$ref": "../oas.json#/paths/~1test",
-      "servers": {
-        "$ref": "oas.json#/servers"
-      }
+      "$ref": "../oas.json#/paths/~1test"
     },
-    "/zz": {
-      "$ref": "scope:nice-move/cli/package.json#/bin"
+    "/xx": {
+      "$ref": "npm:garou/package.json#/bin"
     },
     "/yy": {
       "$ref": "npm:garou/package.json#/bin"
+    },
+    "/zz": {
+      "$ref": "npm:@nice-move/cli/package.json#/bin"
     }
   }
 }

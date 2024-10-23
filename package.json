@@ -1,6 +1,6 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
@@ -39,27 +39,25 @@
     "lint:staged": "nice-move lint staged",
     "prepare": "nice-move git hooks",
     "prepublishOnly": "npm run lint:staged && npm test",
-    "snapshot": "ava --fail-fast -u",
+    "snapshot": "ava --fail-fast -u -w",
     "test": "ava --fail-fast"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.1.2"
+    "@apidevtools/json-schema-ref-parser": "^11.7.2"
   },
   "devDependencies": {
-    "@bring-it/npm": "^0.2.5",
-    "@nice-move/cli": "^0.10.9",
-    "@nice-move/eslint-config-base": "^0.9.15",
-    "@nice-move/prettier-config": "^0.8.1",
-    "ava": "^5.3.1",
+    "@bring-it/npm": "^0.5.9",
+    "@nice-move/all-in-base": "^0.2.6",
+    "ava": "^6.1.3",
     "concordance": "^5.0.4",
-    "eslint": "^8.44.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-ava": "^14.0.0",
-    "garou": "^0.6.11",
+    "garou": "^0.8.1",
     "loader-runner": "^4.3.0",
-    "prettier": "^2.8.8"
+    "prettier": "^3.3.3"
   },
   "engines": {
-    "node": ">=18.12.0 || ^16.15.0"
+    "node": ">=20.0.0 || ^18.17.0"
   },
   "publishConfig": {
     "access": "public",
