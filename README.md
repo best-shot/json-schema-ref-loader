@@ -28,7 +28,10 @@ module.exports = {
       {
         test: /\.(ya?ml|json)$/,
         type: 'asset/resource',
-        loader: '@best-shot/json-schema-ref-loader'
+        loader: '@best-shot/json-schema-ref-loader',
+        options: {
+          dereference: false
+        }
       },
       {
         test: /\.ya?ml$/,

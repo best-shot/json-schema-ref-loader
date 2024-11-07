@@ -10,6 +10,8 @@ const loader = resolve('../lib/index.cjs');
 
 const oas = resolve('fixture/oas.json');
 
+const selfRef = resolve('fixture/self.json');
+
 test.serial('base', async (t) => {
   const { input, result } = await run({
     resource: oas,
@@ -52,6 +54,18 @@ test.serial('after', async (t) => {
       after(data) {
         return data.paths;
       },
+    },
+  });
+
+  t.snapshot(diff(input, result));
+});
+
+test.serial('self', async (t) => {
+  const { input, result } = await run({
+    resource: selfRef,
+    loader,
+    options: {
+      dereference: false,
     },
   });
 

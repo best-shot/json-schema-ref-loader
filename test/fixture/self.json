@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "type": "object",
+    "properties": {
+      "child": {
+        "type": "array",
+        "items": {
+          "$ref": "#/menu"
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
