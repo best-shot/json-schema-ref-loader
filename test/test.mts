@@ -1,14 +1,14 @@
 import test from 'ava';
 
-import { diff, resolvePath, run } from './helper/lib.mjs';
+import { diff, resolvePath, run } from './helper/lib.mts';
 
-function resolve(path) {
+function resolve(path: string): string {
   return resolvePath(path, import.meta.url);
 }
 
-const loader = resolve('../lib/index.cjs');
+const loader = resolve('../lib/index.mjs');
 
-const oas = resolve('fixture/oas.json');
+const oas = resolve('fixture/oas.yaml');
 
 const selfRef = resolve('fixture/self.json');
 
@@ -35,7 +35,7 @@ test.serial('before', async (t) => {
     resource: oas,
     loader,
     options: {
-      before(data) {
+      before(data: { openapi?: string }) {
         delete data.openapi;
 
         return data;
@@ -51,7 +51,7 @@ test.serial('after', async (t) => {
     resource: oas,
     loader,
     options: {
-      after(data) {
+      after(data: { paths?: object }) {
         return data.paths;
       },
     },

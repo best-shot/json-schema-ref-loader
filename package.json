@@ -1,11 +1,10 @@
 {
   "name": "@best-shot/json-schema-ref-loader",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "`json-schema-ref-parser` for `webpack`",
   "license": "MIT",
   "author": {
-    "name": "Eric",
-    "email": "airkro@qq.com"
+    "name": "Eric"
   },
   "keywords": [
     "$ref",
@@ -26,45 +25,55 @@
   "homepage": "https://github.com/best-shot/json-schema-ref-loader",
   "repository": {
     "type": "git",
-    "url": "https://github.com/best-shot/json-schema-ref-loader.git"
+    "url": "git+https://github.com/best-shot/json-schema-ref-loader.git"
   },
   "bugs": {
     "url": "https://github.com/best-shot/json-schema-ref-loader/issues"
   },
-  "main": "lib/index.cjs",
+  "main": "lib/index.mjs",
   "files": [
     "lib"
   ],
+  "type": "module",
   "scripts": {
+    "lint:eslint": "eslint . --quiet --fix --concurrency=auto",
     "lint:staged": "nice-move lint staged",
+    "lint:type": "tsc -p tsconfig.json",
     "prepare": "nice-move git hooks",
-    "prepublishOnly": "npm run lint:staged && npm test",
+    "prepublishOnly": "pnpm run lint:staged && pnpm test",
     "snapshot": "ava --fail-fast -u -w",
-    "test": "ava --fail-fast"
+    "test": "ava --fail-fast",
+    "watch:type": "tsc -p tsconfig.json -w"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^11.7.2"
+    "@apidevtools/json-schema-ref-parser": "^14.2.1",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@bring-it/npm": "^0.5.9",
-    "@nice-move/all-in-base": "^0.2.6",
-    "ava": "^6.1.3",
+    "@bring-it/cli": "^0.11.1",
+    "@bring-it/npm": "^0.9.3",
+    "@nice-move/all-in-base": "^0.6.19",
+    "@types/js-yaml": "^4.0.9",
+    "@types/loader-runner": "^2.2.8",
+    "ava": "^6.4.1",
     "concordance": "^5.0.4",
-    "eslint": "^8.57.1",
-    "eslint-plugin-ava": "^14.0.0",
-    "garou": "^0.8.1",
-    "loader-runner": "^4.3.0",
-    "prettier": "^3.3.3"
+    "eslint": "^9.39.1",
+    "garou": "^0.9.16",
+    "loader-runner": "^4.3.1",
+    "prettier": "^3.6.2"
   },
+  "packageManager": "pnpm@10.21.0",
   "engines": {
-    "node": ">=20.0.0 || ^18.17.0"
+    "node": ">=22.18.0"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "eslintConfig": {
-    "extends": "@nice-move/eslint-config-base"
+  "ava": {
+    "extensions": [
+      "mts"
+    ]
   },
-  "prettier": "@nice-move/prettier-config"
+  "prettier": "@nice-move/all-in-base/prettier"
 }
